@@ -1,0 +1,134 @@
+%!TEX program = pdflatex
+
+\documentclass[
+	ngerman,
+	ruledheaders=section,%Ebene bis zu der die Überschriften mit Linien abgetrennt werden, vgl. DEMO-TUDaPub
+	class=report,%Basisdokumentenklasse. Wählt die Korrespondierende KOMA-Script Klasse
+	thesis={type=master},%Dokumententyp Thesis, für Dissertationen siehe die Demo-Datei DEMO-TUDaPhd
+	accentcolor=1b,%Auswahl der Akzentfarbe
+	custommargins=false,% Ränder werden mithilfe von typearea automatisch berechnet
+	marginpar=false,% Kopfzeile und Fußzeile erstrecken sich nicht über die Randnotizspalte
+	BCOR=12mm,%Bindekorrektur, falls notwendig
+	twoside,%größerer Rand ist abwechselnd rechts und links
+	open=right,%neue Kapitel starten immer auf der rechten Seite (ggf. wird also eine leere Seite eingefügt)
+	parskip=half-,%Absatzkennzeichnung durch Abstand vgl. KOMA-Sript
+	fontsize=11pt,%Basisschriftgröße laut Corporate Design ist mit 9pt häufig zu klein
+	IMRAD=false,%Abschalten von IMRAD-Warnings wegen fehlender Labels
+	bibliography=totoc,%Literaturverzeichnis im Inhaltsverzeichnis
+]{tudapub}
+
+% Der folgende Block ist nur bei pdfTeX auf Versionen vor April 2018 notwendig
+\usepackage{iftex}
+\ifPDFTeX
+\usepackage[utf8]{inputenc}%kompatibilität mit TeX Versionen vor April 2018
+\fi
+
+%%%%%%%%%%%%%%%%%%%
+%Sprachanpassung und Verbesserte Trennregeln
+%%%%%%%%%%%%%%%%%%%
+\usepackage[english, main=ngerman]{babel}
+\usepackage{microtype}
+
+%%%%%%%%%%%%%%%%%%%
+%Beschriftung von Tabellen, Skizzen, Listings etc.
+%%%%%%%%%%%%%%%%%%%
+\usepackage{caption}
+\captionsetup{justification=centering}
+
+%Tabellen
+%%%%%%%%%%%%%%%%%%%
+%\usepackage{array}     % Basispaket für Tabellenkonfiguration, wird von den folgenden automatisch geladen
+%\usepackage{tabularx}  % Tabellen, die sich automatisch der Breite anpassen
+%\usepackage{longtable} % Mehrseitige Tabellen
+%\usepackage{xltabular} % Mehrseitige Tabellen mit anpassarer Breite
+\usepackage{booktabs}   % Verbesserte Möglichkeiten für Tabellenlayout über horizontale Linien
+
+%%%%%%%%%%%%%%%%%%%
+%Paketvorschläge Mathematik
+%%%%%%%%%%%%%%%%%%%
+\usepackage{mathtools}  % erweiterte Fassung von amsmath
+\usepackage{amssymb}    % erweiterter Zeichensatz
+%\usepackage{siunitx}   % Einheiten
+
+%%%%%%%%%%%%%%%%%%%
+%Referenzen und Links
+%%%%%%%%%%%%%%%%%%%
+\usepackage{cleveref}   % automatisches Voranstellen des Referenztyps (z.B. Kapitel)
+\usepackage{hyperref}   % erzeugt aus Referenzen und Web-Adressen Hyperlinks zum Springen im Dokument oder dem Öffnen einer Webseite.
+%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%
+%Umgebungen für Beispiele und Definitionen
+%%%%%%%%%%%%%%%%%%%
+\usepackage{amsthm}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{corollary}{Korollar}[chapter]
+\newtheorem{proposition}{Propostion}[chapter]
+\newtheorem{example}{Beispiel}[chapter]
+
+%%%%%%%%%%%%%%%%%%%
+% Code-Listings und Illustrationen
+%%%%%%%%%%%%%%%%%%%
+\usepackage{listings}   % ermöglicht es Quell-code schön darzustellen
+\usepackage{graphicx}
+%%%%%%%%%%%%%%%%%%%
+
+\usepackage{lipsum} % Blindext im Beispiel erzeugen (kann entfernt werden)
+
+
+
+\begin{document}
+
+\frontmatter
+
+\Metadata{
+	title=Hier steht der mehrzeilige Titel der Thesis,
+	author=Jane Doe
+}
+
+\title{Hier steht der mehrzeilige Titel der Thesis}
+\subtitle{This is the English Title of the Thesis} %oder der deutsche Titel, falls Thesis in englisch geschrieben wird
+\author[J. Doe]{Jane Doe}%optionales Argument ist die Signatur
+% \studentID{12345678}%Benutzung, falls gewünscht
+\reviewer{Prof.~Dr.~rer.~nat.~Andy Schürr \and M.\,Sc.~Erika Mustermann}%Gutachter
+\titleaddendum{ES-M-123}
+
+%Diese Felder werden untereinander auf der Titelseite platziert. 
+\department{etit} % Das Kürzel wird automatisch ersetzt und als Studienfach gewählt, siehe Liste der Kürzel im Dokument.
+\group{Fachgebiet Echtzeitsysteme}
+
+\submissiondate{\today}
+\examdate{\today}
+
+% \tuprints{urn=1234,printid=12345}
+% \dedication{Für alle, die \TeX{} nutzen.}
+
+\maketitle
+
+\affidavit % benutzen, wenn die Thesis gedruckt und digital eingereicht wird
+% \affidavit[digital] % benutzen, wenn die Thesis ausschließlich digital eingereicht wird
+
+\input{chapters/guidelines}
+
+\input{chapters/abstract-de.tex}
+
+\input{chapters/abstract-en.tex}
+
+\tableofcontents
+
+\mainmatter
+
+\input{chapters/introduction.tex}
+\input{chapters/background.tex}
+\input{chapters/implementation.tex}
+\input{chapters/evaluation.tex}
+\input{chapters/related-work.tex}
+\input{chapters/conclusion.tex}
+\input{chapters/guideline-sonstiges}
+
+\bibliographystyle{plain}
+\bibliography{chapters/references}
+	
+\end{document}

@@ -1,0 +1,74 @@
+%!TEX root = ../thesis-main.tex
+
+\chapter{Grundlagen}\label{chapter:background}
+In diesem Kapitel müssen die Grundlagen präsentiert und eingeführt werden, die ein Leser benötigt, um deinen Text zu verstehen.
+Man sollte sich hierbei vornehmen, die Grundlagen so einzuführen, dass auch ein fachfremder Leser diese verstehen kann.
+Hierzu gehören Theorien, Frameworks und andere Arbeiten, die essentiell sind, um die weiteren Kapitel verstehen zu können. 
+Damit das gut klappt, sollte ein gutes Beispiel gewählt werden, welches sich möglichst auch durch den Rest der Arbeit zieht.
+Somit werden die Ausführungen nachvollziehbarer und man kann einzelne Schritte besser in Bezug zueinander setzen.
+
+Darüber hinaus sollten die einzelnen diskutierten Themen so angelegt werden, dass möglichst keine Vorwärtsreferenzen entstehen (siehe Schreibstil). 
+Auch solltest du einen guten Kompromiss zwischen einer zu kurzen und einer zu langen Erläuterung finden (siehe Schreibstil).
+
+
+
+\section{Illustratives Beispiel}\label{sect:motivating-examples}
+Illustrationen, Tabellen und andere Elemente helfen dabei einen Sachverhalt oder auch Ergebnisse besser darzustellen. Damit diese Helfer auch einen Bezug zum Text haben, sollten sie aus dem Fließtext heraus immer mindestens einmal \underline{sinnvoll} referenziert worden sein.
+In Latex kann man so etwas recht komfortabel mit \lstinline|\ref(<label>)| bewerkstelligen. Damit lässt sich später im PDF-Dokument mit einem einfachen Klick zu den Referenzen springen, was den Bezug zum Text verbessert und letztlich das Verständnis fördert.\\
+Beispiel: Dies ist eine Referenz zu Kapitel~\ref{chapter:introduction}.\\ 
+Um mögliche Inkonsistenzen beim Referenzieren von Kapiteln, Skizzen, Tabellen o.Ä. zu vermeiden, empfehlen wir die Verwendung des Paketes Cleverref. Damit werden automatisch Bezeichner wie \glqq Kapitel\grqq{} oder \glqq Section\grqq{} in der korrekten Sprache vor die Referenz gestellt.\\
+Beispiel: Dies eine weitere Referenz zu \cref{chapter:introduction}.\\
+Illustrationen (\cref{fig:some-figure}), andere Elemente wie z.B. Tabellen (\cref{table:some-table}), Definitionen (\cref{def:dummy-def}) oder Beispiele (\cref{example:dummy-example}) lassen sich genauso einfach referenzieren.
+%\lipsum[2-3]
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.3\linewidth]{figures/sample-figure.pdf}
+    \caption{Dies ist eine Beispiel-Abbildung, die das Logo der TU Darmstadt zeigt.}\label{fig:some-figure}
+\end{figure}
+
+%\lipsum[4-5]
+
+\begin{definition}[Timed Automaton]\label{def:dummy-def}
+Ein \emph{Timed Automaton (TA)} ist ein Tupel $\mathcal{A}=(L,\ell_0,\Sigma,C,I,E)$, bei dem
+\begin{itemize}
+	\item $L$ eine endliche Menge von \emph{Orten} ist,
+	\item $\ell_0\in L$ der \emph{Startort} ist,
+	\item $\Sigma$ eine endliche Menge von \emph{Aktionen} mit $L\cap\Sigma=\emptyset$ ist,
+	\item $C$ eine endliche Menge von \emph{Uhren} über $\mathbb{T}_C$ mit $C\cap(L\cup\Sigma)=\emptyset$ ist,
+	\item $I:L\rightarrow\mathcal{B}(C)$ eine Funktion ist, die Orten \emph{Invarianten} zuweist, und
+	\item $E\subseteq L\times\mathcal{B}(C)\times\Sigma\times 2^{C}\times L$ eine endliche Relation ist, die \emph{Kanten} definiert.
+\end{itemize}
+\end{definition}
+
+%\lipsum[8]
+
+\paragraph{Ein Paragraph}
+\lipsum[9]
+
+\begin{example}[Ein Beispiel]\label{example:dummy-example}
+\lipsum[5-6]
+\end{example}
+
+\begin{table}[tp]
+    \centering
+    \caption{Dies ist die Beschriftung einer Tabelle.}\label{table:some-table}
+    \input{tables/example-table.tex}
+\end{table}
+
+%\lipsum[3]
+
+\begin{theorem}[Theorem mit einer Formel]\label{theorem:dummy-theorem}
+Dies ist ein Theorem mit der Formel
+\begin{equation}
+\label{eq:equation1}
+\sum_{k=1}^n k=\frac{n(n+1)}{2}=\frac{n^2+n}{2}
+\end{equation}
+gefolgt von etwas mehr Text, einer Gleichung
+$$\sqrt{9}=\pm3\text{ und }2\alpha=4\Rightarrow\alpha=2$$
+und noch mehr Text und einer letzten einzeiligen Gleichung \(C = B \log_2 \left(1 + \frac{S}{N} \right) \).
+\end{theorem}
+
+\begin{proof}
+Dies ist der Beweis von \cref{theorem:dummy-theorem} mit \cref{eq:equation1}.
+\end{proof}
