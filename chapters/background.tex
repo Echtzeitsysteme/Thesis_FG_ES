@@ -72,3 +72,13 @@ und noch mehr Text und einer letzten einzeiligen Gleichung \(C = B \log_2 \left(
 \begin{proof}
 Dies ist der Beweis von \cref{theorem:dummy-theorem} mit \cref{eq:equation1}.
 \end{proof}
+
+
+Auch Listings von beispielsweise Python-Code lassen sich erstellen und referenzieren
+(siehe~\cref{lst:some-listing}).
+\begin{lstlisting}[language=Python, caption=Python Listing, label=lst:some-listing]
+import random
+    
+def get_grade(thesis):
+    return random.randrange(1,6)
+\end{lstlisting}
