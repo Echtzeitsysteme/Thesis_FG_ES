@@ -1,6 +1,9 @@
 pdfa.xmpi
 Thesis_FG_ES.zip
 thesis-main.pdf
+aufgabenstellung.pdf
+*.xmpi
+*.xmpdata
 
 comment.cut
 build/

@@ -1,7 +1,8 @@
-%!TEX program = pdflatex
+%!TEX program = lualatex
+% ^use lualatex for best compatibility
 
 \documentclass[
-	ngerman,
+	ngerman, % TODO: Or 'english' if you write in English
 	ruledheaders=section,%Ebene bis zu der die Überschriften mit Linien abgetrennt werden, vgl. DEMO-TUDaPub
 	class=report,%Basisdokumentenklasse. Wählt die Korrespondierende KOMA-Script Klasse
 	thesis={type=master},%Dokumententyp Thesis, für Dissertationen siehe die Demo-Datei DEMO-TUDaPhd
@@ -10,11 +11,14 @@
 	marginpar=false,% Kopfzeile und Fußzeile erstrecken sich nicht über die Randnotizspalte
 	BCOR=12mm,%Bindekorrektur, falls notwendig
 	twoside,%größerer Rand ist abwechselnd rechts und links
-	open=right,%neue Kapitel starten immer auf der rechten Seite (ggf. wird also eine leere Seite eingefügt)
+	open=right, %TODO: Kann bei rein digitalen Abgaben entfernt werden; neue Kapitel starten immer auf der rechten Seite (ggf. wird also eine leere Seite eingefügt)
 	parskip=half-,%Absatzkennzeichnung durch Abstand vgl. KOMA-Sript
 	fontsize=11pt,%Basisschriftgröße laut Corporate Design ist mit 9pt häufig zu klein
 	IMRAD=false,%Abschalten von IMRAD-Warnings wegen fehlender Labels
 	bibliography=totoc,%Literaturverzeichnis im Inhaltsverzeichnis
+	pdfa=true,
+	%	toc=flat,%https://github.com/tudace/tuda_latex_templates/issues/326#issuecomment-889819154
+	numbers=noenddot, % Remove dots at the end of all numbers; https://tex.stackexchange.com/a/40045
 ]{tudapub}
 
 % Der folgende Block ist nur bei pdfTeX auf Versionen vor April 2018 notwendig
@@ -26,7 +30,7 @@
 %%%%%%%%%%%%%%%%%%%
 %Sprachanpassung und Verbesserte Trennregeln
 %%%%%%%%%%%%%%%%%%%
-\usepackage[english, main=ngerman]{babel}
+\usepackage[english, main=ngerman]{babel} % TODO: Or 'main=english' if you write in English
 \usepackage{microtype}
 
 %%%%%%%%%%%%%%%%%%%
@@ -38,7 +42,7 @@
 %Tabellen
 %%%%%%%%%%%%%%%%%%%
 %\usepackage{array}     % Basispaket für Tabellenkonfiguration, wird von den folgenden automatisch geladen
-%\usepackage{tabularx}  % Tabellen, die sich automatisch der Breite anpassen
+\usepackage{tabularx}  % Tabellen, die sich automatisch der Breite anpassen
 %\usepackage{longtable} % Mehrseitige Tabellen
 %\usepackage{xltabular} % Mehrseitige Tabellen mit anpassarer Breite
 \usepackage{booktabs}   % Verbesserte Möglichkeiten für Tabellenlayout über horizontale Linien
@@ -48,7 +52,8 @@
 %%%%%%%%%%%%%%%%%%%
 \usepackage{mathtools}  % erweiterte Fassung von amsmath
 \usepackage{amssymb}    % erweiterter Zeichensatz
-%\usepackage{siunitx}   % Einheiten
+% SI Basiseinheiten mit bits und Bytes
+\usepackage[binary-units=true]{siunitx}
 
 %%%%%%%%%%%%%%%%%%%
 % Code-Listings und Illustrationen
@@ -60,8 +65,9 @@
 %%%%%%%%%%%%%%%%%%%
 %Referenzen und Links
 %%%%%%%%%%%%%%%%%%%
-\usepackage{cleveref}   % automatisches Voranstellen des Referenztyps (z.B. Kapitel)
-\usepackage{hyperref}   % erzeugt aus Referenzen und Web-Adressen Hyperlinks zum Springen im Dokument oder dem Öffnen einer Webseite.
+\usepackage{hyperref} % erzeugt aus Referenzen und Web-Adressen Hyperlinks zum Springen im Dokument oder dem Öffnen einer Webseite.
+% https://tex.stackexchange.com/questions/195976/change-the-output-format-of-cref-from-table-to-table-and-from-eq-to-equation
+\usepackage[noabbrev]{cleveref} % automatisches Voranstellen des Referenztyps (z.B. Kapitel)
 %%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%
@@ -76,7 +82,91 @@
 \newtheorem{example}{Beispiel}[chapter]
 
 
-\usepackage{lipsum} % Blindext im Beispiel erzeugen (kann entfernt werden)
+\usepackage{lipsum} % TODO: Blindext im Beispiel erzeugen (kann entfernt werden)
+
+
+% Deutsche Anführungszeichen
+% TODO: You have to adapt this if you write in English and you use this command
+\newcommand{\enquot}[1]{“{}#1”{}}
+
+% Inline Aufzählungen
+\usepackage{paralist}
+
+% Aufzählungen mit angepassten items
+\usepackage[inline]{enumitem}
+
+% Colorbox
+\usepackage{color}
+
+% Abkürzungsverzeichnis
+\usepackage{acronym}
+
+% tikz
+% TODO: Tikz Pakete einbinden, falls tikz benötigt wird
+%\usepackage{tikz}
+%\usepackage{pdfpages}
+%\usepackage{pgfplotstable}
+%\usepackage{pgfplots}
+%% https://github.com/xuyuan/pgf-umlcd/issues/17
+%%\usepackage{tikz-uml}
+%\let\attribute\relax
+%\usepackage[simplified]{pgf-umlcd}
+%\usetikzlibrary{shapes,arrows,positioning,fit,calc}
+%\usetikzlibrary{shapes.geometric}
+%\usepgfplotslibrary{units}
+%\pgfplotsset{compat = 1.3}
+%\usepackage{makecell}
+
+% Circle around symbols
+% TODO: Einkommentieren, falls Kreise um Symbole im Text benötigt werden sollten
+%\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+%		\node[shape=circle,draw,inner sep=1pt,minimum height=1em] (char) {#1};}}
+
+% centering captions
+\usepackage[justification=centering,labelfont=bf]{caption}
+
+% Subcaptions
+\usepackage{subcaption}
+
+% custom texttt
+\newcommand{\texttts}[1]{\texttt{\small #1}}
+\newcommand{\textttss}[1]{\texttt{\scriptsize #1}}
+
+% Rotate figures
+\usepackage{rotating}
+
+% Temporary fix for figure placement
+\usepackage[section]{placeins}
+\usepackage{float}
+
+% TODO: Wenn du CSV-Dateien laden möchtest, könnte dieses Paket hilfreich sein.
+% Load CSV files
+%\usepackage{csvsimple}
+
+% Break URLs
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-}
+
+% Add type for equations in floats
+% https://stackoverflow.com/questions/149479/adding-a-caption-to-an-equation-in-latex
+\DeclareCaptionType{equ}[][]
+
+% Fix LOF and LOT spacing errors
+% https://tex.stackexchange.com/a/187202
+% TODO: Falls Platzprobleme in den automatischen Listen (figures, tables) passieren, könnte das hilfreich sein:
+%\usepackage[titles]{tocloft}
+%\cftsetindents{figure}{0em}{2.5em}
+%\cftsetindents{table}{0em}{2.5em}
+
+% Fix subfigure referece using \cref
+% https://tex.stackexchange.com/a/180382
+\captionsetup[subfigure]{subrefformat=simple,labelformat=simple}
+\renewcommand\thesubfigure{(\alph{subfigure})}
+
+% Diagonal fractions
+% https://tex.stackexchange.com/questions/3372/how-do-i-typeset-arbitrary-fractions-like-the-standard-symbol-for-5-%C2%BD
+% TODO: Einkommentieren, falls diagonale Brüche gewünscht werden
+%\usepackage{xfrac}
 
 
 \begin{document}
@@ -92,12 +182,15 @@
 \subtitle{This is the English Title of the Thesis} %oder der deutsche Titel, falls Thesis in englisch geschrieben wird
 \author[J. Doe]{Jane Doe}%optionales Argument ist die Signatur
 % \studentID{12345678}%Benutzung, falls gewünscht
-\reviewer{Prof.~Dr.~rer.~nat.~Andy Schürr \and M.\,Sc.~Erika Mustermann}%Gutachter
+\reviewer{Prof.~Dr.~rer.~nat.~Andy Schürr \and Erika Mustermann,~M.\,Sc.}%Gutachter
+% TODO: Nach Anmeldegespräch Nummer bei Betreuer erfragen und hier anpassen!
 \titleaddendum{ES-M-123}
 
 %Diese Felder werden untereinander auf der Titelseite platziert. 
 \department{etit} % Das Kürzel wird automatisch ersetzt und als Studienfach gewählt, siehe Liste der Kürzel im Dokument.
 \group{Fachgebiet Echtzeitsysteme}
+% TODO: Or 'Real-Time Systems Lab' if you write in English
+%\group{Real-Time Systems Lab}
 
 \submissiondate{\today}
 \examdate{\today}
@@ -107,16 +200,46 @@
 
 \maketitle
 
+% TODO
 \affidavit % benutzen, wenn die Thesis gedruckt und digital eingereicht wird
 % \affidavit[digital] % benutzen, wenn die Thesis ausschließlich digital eingereicht wird
 
 \input{chapters/guidelines}
 
 \input{chapters/abstract-de.tex}
-
+\acresetall
 \input{chapters/abstract-en.tex}
 
+% Reset all acronyms after the abstracts
+\acresetall
+
 \tableofcontents
+\clearpage
+\cleardoublepage
+
+% TODO: Das Abkürzungsverzeichnis ist optional! Hier einkommentieren, falls es benutzt werden soll.
+%% Abkürzungsverzeichnis
+%\input{chapters/abbreviations.tex}
+%\clearpage
+%\cleardoublepage
+
+% Auflistung Abbildungen
+% https://tex.stackexchange.com/questions/784/how-to-change-the-line-spacing-in-my-list-of-figures
+\newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}
+\addtocontents{lof}{\protect\noaddvspace}
+\listoffigures
+\label{sec:list-of-figures}
+%\addcontentsline{toc}{chapter}{\protect\numberline{}List of Figures}
+\cleardoublepage
+\clearpage
+
+% Auflistung Tabellen
+\addtocontents{lot}{\protect\noaddvspace}
+\listoftables
+\label{sec:list-of-tables}
+%\addcontentsline{toc}{chapter}{\protect\numberline{}List of Tables}
+\cleardoublepage
+\clearpage
 
 \mainmatter
 
@@ -130,5 +253,8 @@
 
 \bibliographystyle{plain}
 \bibliography{chapters/references}
+
+% TODO: Der Anhang ist optional, falls gewünscht bitte einkommentieren!
+%\input{chapters/appendix.tex}
 	
 \end{document}
