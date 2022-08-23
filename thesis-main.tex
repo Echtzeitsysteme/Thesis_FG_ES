@@ -139,8 +139,9 @@
 \usepackage[section]{placeins}
 \usepackage{float}
 
+% TODO: Wenn du CSV-Dateien laden möchtest, könnte dieses Paket hilfreich sein.
 % Load CSV files
-\usepackage{csvsimple}
+%\usepackage{csvsimple}
 
 % Break URLs
 \usepackage{url}
@@ -182,6 +183,7 @@
 \author[J. Doe]{Jane Doe}%optionales Argument ist die Signatur
 % \studentID{12345678}%Benutzung, falls gewünscht
 \reviewer{Prof.~Dr.~rer.~nat.~Andy Schürr \and Erika Mustermann,~M.\,Sc.}%Gutachter
+% TODO: Nach Anmeldegespräch Nummer bei Betreuer erfragen und hier anpassen!
 \titleaddendum{ES-M-123}
 
 %Diese Felder werden untereinander auf der Titelseite platziert. 
@@ -215,10 +217,11 @@
 \clearpage
 \cleardoublepage
 
-% Abkürzungsverzeichnis
-\input{chapters/abbreviations.tex}
-\clearpage
-\cleardoublepage
+% TODO: Das Abkürzungsverzeichnis ist optional! Hier einkommentieren, falls es benutzt werden soll.
+%% Abkürzungsverzeichnis
+%\input{chapters/abbreviations.tex}
+%\clearpage
+%\cleardoublepage
 
 % Auflistung Abbildungen
 % https://tex.stackexchange.com/questions/784/how-to-change-the-line-spacing-in-my-list-of-figures
@@ -251,6 +254,7 @@
 \bibliographystyle{plain}
 \bibliography{chapters/references}
 
-\input{chapters/appendix.tex}
+% TODO: Der Anhang ist optional, falls gewünscht bitte einkommentieren!
+%\input{chapters/appendix.tex}
 	
 \end{document}
