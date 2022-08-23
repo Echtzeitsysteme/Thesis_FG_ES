@@ -46,6 +46,12 @@
 
 \usepackage{lipsum} % Blindext im Beispiel erzeugen (kann entfernt werden)
 
+%%%%%%%%%%%%%%%%%%%
+%Beschriftung von Tabellen, Skizzen, Listings etc.
+%%%%%%%%%%%%%%%%%%%
+\usepackage{caption}
+\captionsetup{justification=centering}
+
 
 
 \begin{document}
@@ -60,7 +66,7 @@
 \title{Hier steht der mehrzeilige Titel der Thesis}
 \subtitle{This is the English Title of the Thesis} %oder der deutsche Titel, falls Thesis in englisch geschrieben wird
 \author[J. Doe]{Jane Doe}
-\reviewer{Prof.~Dr.~rer.~nat.~Andy Schürr \and M.\,Sc.~Erika Mustermann}%Gutachter
+\reviewer{Prof.~Dr.~rer.~nat.~Andy Schürr \and Erika Mustermann,~M.\,Sc.}%Gutachter
 
 \department{etit}
 \group{Fachgebiet Echtzeitsysteme}
@@ -95,7 +101,7 @@ Dies ist ein Verweis auf Abbildung~\ref{fig:some-figure}.
 
 \begin{figure}[tp]
     \centering
-    \includegraphics[width=.3\linewidth]{figures/sample-figure.pdf}
+    \includegraphics[width=.3\linewidth]{figures/es_logo_gross.jpg}
     \caption{Dies ist eine Beispiel-Abbildung, die das Logo der TU Darmstadt zeigt.}\label{fig:some-figure}
 \end{figure}
 
