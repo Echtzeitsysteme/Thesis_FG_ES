@@ -14,3 +14,12 @@ Additionally, this template must be compiled with LuaLaTeX (which is part of mos
 
 This template is a slightly adapted version of the template available at [GitHub](https://github.com/tudace/tuda_latex_templates), [CTAN](https://www.ctan.org/pkg/tuda-ci), and [TU Darmstadt](https://www.ce.tu-darmstadt.de/ce/latex_tuda/index.de.jsp).
 
+
+## Presentations
+
+There is another TeX file available to create slides (e.g., for your final thesis presentation):
+[slides.tex](./slides.tex)
+
+You can also include notes that will be rendered in another frame besides the actual slides.
+For your presentation, there is the possibility to use a PDF presenter that is able to create a split screen (like PowerPoint would do).
+A lightweight tool for this purpose is [pdfpc](https://pdfpc.github.io/).
