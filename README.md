@@ -17,9 +17,4 @@ This template is a slightly adapted version of the template available at [GitHub
 
 ## Presentations
 
-There is another TeX file available to create slides (e.g., for your final thesis presentation):
-[slides.tex](./slides.tex)
-
-You can also include notes that will be rendered in another frame besides the actual slides.
-For your presentation, there is the possibility to use a PDF presenter that is able to create a split screen (like PowerPoint would do).
-A lightweight tool for this purpose is [pdfpc](https://pdfpc.github.io/).
+There is another [repository](https://github.com/Echtzeitsysteme/slide-templates) available containing slide templates.
