@@ -541,7 +541,7 @@ FUNCTION {format.doi}
 {
   doi missing$
     { "" * }
-    { ". doi: \href{https://doi.org/" * doi * "}{" * doi * "}\,." * }
+    { ". doi: \href{https://doi.org/" * doi * "}{" * doi * "}." * }
   if$
 }
 
