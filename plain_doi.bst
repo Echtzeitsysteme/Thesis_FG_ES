@@ -13,6 +13,7 @@ ENTRY
     author
     booktitle
     chapter
+    doi
     edition
     editor
     howpublished
@@ -535,6 +536,15 @@ FUNCTION {format.incoll.inproc.crossref}
   " \cite{" * crossref * "}" *
 }
 
+%% DOI
+FUNCTION {format.doi}
+{
+  doi missing$
+    { "" * }
+    { ". doi: \href{https://doi.org/" * doi * "}{" * doi * "}\,." * }
+  if$
+}
+
 FUNCTION {article}
 { output.bibitem
   format.authors "author" output.check
@@ -551,6 +561,7 @@ FUNCTION {article}
     }
   if$
   new.block
+  format.doi
   note output
   fin.entry
 }
@@ -582,6 +593,7 @@ FUNCTION {book}
   if$
   format.edition output
   format.date "year" output.check
+  format.doi
   new.block
   note output
   fin.entry
@@ -596,6 +608,7 @@ FUNCTION {booklet}
   howpublished output
   address output
   format.date output
+  format.doi
   new.block
   note output
   fin.entry
@@ -630,6 +643,7 @@ FUNCTION {inbook}
   if$
   format.edition output
   format.date "year" output.check
+  format.doi
   new.block
   note output
   fin.entry
@@ -656,6 +670,7 @@ FUNCTION {incollection}
       format.chapter.pages output
     }
   if$
+  format.doi
   new.block
   note output
   fin.entry
@@ -690,6 +705,7 @@ FUNCTION {inproceedings}
       format.pages output
     }
   if$
+  format.doi
   new.block
   note output
   fin.entry
@@ -727,6 +743,7 @@ FUNCTION {manual}
   format.edition output
   format.date output
   new.block
+  format.doi
   note output
   fin.entry
 }
@@ -742,6 +759,7 @@ FUNCTION {mastersthesis}
   address output
   format.date "year" output.check
   new.block
+  format.doi
   note output
   fin.entry
 }
@@ -755,6 +773,7 @@ FUNCTION {misc}
   howpublished output
   format.date output
   new.block
+  format.doi
   note output
   fin.entry
   empty.misc.check
@@ -771,6 +790,7 @@ FUNCTION {phdthesis}
   address output
   format.date "year" output.check
   new.block
+  format.doi
   note output
   fin.entry
 }
@@ -805,6 +825,7 @@ FUNCTION {proceedings}
       publisher output
     }
   if$
+  format.doi
   new.block
   note output
   fin.entry
@@ -821,6 +842,7 @@ FUNCTION {techreport}
   address output
   format.date "year" output.check
   new.block
+  format.doi
   note output
   fin.entry
 }
@@ -831,6 +853,7 @@ FUNCTION {unpublished}
   new.block
   format.title "title" output.check
   new.block
+  format.doi
   note "note" output.check
   format.date output
   fin.entry
