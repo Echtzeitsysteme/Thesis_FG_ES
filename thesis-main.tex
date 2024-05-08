@@ -168,6 +168,8 @@
 % TODO: Einkommentieren, falls diagonale Brüche gewünscht werden
 %\usepackage{xfrac}
 
+% Change the font size of URLs globally to a smaller value
+\renewcommand{\UrlFont}{\ttfamily\small}
 
 \begin{document}
 
@@ -251,7 +253,10 @@
 \input{chapters/conclusion.tex}
 \input{chapters/guideline-sonstiges}
 
-\bibliographystyle{plain}
+% TODO: If you write in English, change the string in the following line from "plain_doi_de" to "plain_doi"!
+% TODO: Keep in mind to use "Last accessed:" instead of "Letzter Zugriff:" within your .bib file.
+\bibliographystyle{plain_doi_de}
+% TODO: Falls du Bugs im deutschen Literaturverzeichnis findest, melde dich bei Max.
 \bibliography{chapters/references}
 
 % TODO: Der Anhang ist optional, falls gewünscht bitte einkommentieren!
