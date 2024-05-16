@@ -194,7 +194,7 @@ FUNCTION {format.names}
         { namesleft #1 >
             { ", " * t * }
             { numnames #2 >
-                { "," * }
+                { "" * }
                 'skip$
               if$
               t "others" =
@@ -336,8 +336,8 @@ FUNCTION {format.edition}
 { edition empty$
     { "" }
     { output.state mid.sentence =
-        { edition "l" change.case$ " edition" * }
-        { edition "t" change.case$ " edition" * }
+        { edition "l" change.case$ ". Auflage" * }
+        { edition "t" change.case$ ". Auflage" * }
       if$
     }
   if$
@@ -785,7 +785,7 @@ FUNCTION {phdthesis}
   new.block
   format.btitle "title" output.check
   new.block
-  "PhD thesis" format.thesis.type output.nonnull
+  "Dissertation" format.thesis.type output.nonnull
   school "school" output.check
   address output
   format.date "year" output.check
