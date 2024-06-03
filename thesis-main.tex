@@ -11,7 +11,7 @@
 	marginpar=false,% Kopfzeile und Fußzeile erstrecken sich nicht über die Randnotizspalte
 	BCOR=12mm,%Bindekorrektur, falls notwendig
 	twoside,%größerer Rand ist abwechselnd rechts und links
-	open=right, %TODO: Kann bei rein digitalen Abgaben entfernt werden; neue Kapitel starten immer auf der rechten Seite (ggf. wird also eine leere Seite eingefügt)
+%	open=right, %TODO: Kann bei rein digitalen Abgaben entfernt werden; neue Kapitel starten immer auf der rechten Seite (ggf. wird also eine leere Seite eingefügt)
 	parskip=half-,%Absatzkennzeichnung durch Abstand vgl. KOMA-Sript
 	fontsize=11pt,%Basisschriftgröße laut Corporate Design ist mit 9pt häufig zu klein
 	IMRAD=false,%Abschalten von IMRAD-Warnings wegen fehlender Labels
@@ -217,13 +217,11 @@
 
 \tableofcontents
 \clearpage
-\cleardoublepage
 
 % TODO: Das Abkürzungsverzeichnis ist optional! Hier einkommentieren, falls es benutzt werden soll.
 %% Abkürzungsverzeichnis
 %\input{chapters/abbreviations.tex}
 %\clearpage
-%\cleardoublepage
 
 % Auflistung Abbildungen
 % https://tex.stackexchange.com/questions/784/how-to-change-the-line-spacing-in-my-list-of-figures
@@ -232,7 +230,6 @@
 \listoffigures
 \label{sec:list-of-figures}
 %\addcontentsline{toc}{chapter}{\protect\numberline{}List of Figures}
-\cleardoublepage
 \clearpage
 
 % Auflistung Tabellen
@@ -240,7 +237,6 @@
 \listoftables
 \label{sec:list-of-tables}
 %\addcontentsline{toc}{chapter}{\protect\numberline{}List of Tables}
-\cleardoublepage
 \clearpage
 
 \mainmatter
