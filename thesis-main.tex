@@ -1,6 +1,14 @@
 %!TEX program = lualatex
 % ^use lualatex for best compatibility
 
+% https://github.com/tudace/tuda_latex_templates/issues/472#issuecomment-2203339479
+\DocumentMetadata{
+	pdfstandard=a-2b,
+	% TODO: Change to "en" if you write in English
+	lang=de,
+	pdfversion=1.7,
+}
+
 \documentclass[
 	ngerman, % TODO: Or 'english' if you write in English
 	ruledheaders=section,%Ebene bis zu der die Überschriften mit Linien abgetrennt werden, vgl. DEMO-TUDaPub
@@ -16,7 +24,8 @@
 	fontsize=11pt,%Basisschriftgröße laut Corporate Design ist mit 9pt häufig zu klein
 	IMRAD=false,%Abschalten von IMRAD-Warnings wegen fehlender Labels
 	bibliography=totoc,%Literaturverzeichnis im Inhaltsverzeichnis
-	pdfa=true,
+	% https://github.com/tudace/tuda_latex_templates/issues/472#issuecomment-2203339479
+%	pdfa=true,
 	%	toc=flat,%https://github.com/tudace/tuda_latex_templates/issues/326#issuecomment-889819154
 	numbers=noenddot, % Remove dots at the end of all numbers; https://tex.stackexchange.com/a/40045
 ]{tudapub}
