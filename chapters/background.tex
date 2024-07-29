@@ -82,3 +82,16 @@ import random
 def get_grade(thesis):
     return random.randrange(1,6)
 \end{lstlisting}
+
+
+\section{Inline Code und/oder Begriffe aus Abbildungen}\label{sect-inline-code}
+
+Um im Fließtext auf Code oder Begriffe (wie z.\,B. Klassennamen) aus Diagrammen zu referenzieren, bietet sich
+\texttt{\textbackslash\-texttt\{inhalt\}}
+an.
+Diese Audrücke werden zu \texttt{inhalt} gerendert.
+
+Eine Schwierigkeit dabei könnte sein, dass die String in diesen Fällen nicht immer automatisch oder korrekt umgebrochen werden.
+Dafür ist wird in diesem Dokument das Paket \texttt{hyphenat} geladen.
+Sollte es einmal Probleme geben, so können LaTeX immer durch \texttt{\textbackslash-} zwischen Silben Hinweise gegeben werden, wie ein Wort zu brechen ist.
+Beispiel: \texttt{\textbackslash\-texttt\{langer\textbackslash-Inhalt\textbackslash-Der\textbackslash-Nicht\textbackslash-Umbricht\}}
