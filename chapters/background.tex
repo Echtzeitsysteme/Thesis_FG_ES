@@ -27,6 +27,23 @@ Illustrationen (\cref{fig:some-figure}), andere Elemente wie z.B. Tabellen (\cre
     \caption{Dies ist eine Beispiel-Abbildung, die das Logo des Fachgebiets zeigt.}\label{fig:some-figure}
 \end{figure}
 
+\begin{figure}
+    \centering
+    % Erste Abbildung
+    \begin{subfigure}[b]{0.48\textwidth}
+	\centering
+        \includegraphics[width=.4\linewidth]{figures/es_logo_gross.jpg}
+        \subcaption{Subfigure Bild Nr.\,1}
+    \end{subfigure}
+    % Zweite Abbildung
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=.4\linewidth]{figures/es_logo_gross.jpg}
+        \subcaption{Subfigure Bild Nr.\,2}
+    \end{subfigure}
+    \caption{Es ist auch möglich Abbildungen mit Unterabbildungen zu erstellen.}\label{fig:some-sub-figure}
+\end{figure}
+
 %\lipsum[4-5]
 
 \begin{definition}[Timed Automaton]\label{def:dummy-def}
