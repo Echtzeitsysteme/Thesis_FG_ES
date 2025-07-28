@@ -1,4 +1,5 @@
 %!TEX program = lualatex
+% ^use lualatex for best compatibility
 
 % https://github.com/tudace/tuda_latex_templates/issues/472#issuecomment-2203339479
 \DocumentMetadata{
@@ -25,11 +26,11 @@
 % Der folgende Block ist nur bei pdfTeX auf Versionen vor April 2018 notwendig
 \usepackage{iftex}
 \ifPDFTeX
-\usepackage[utf8]{inputenc}%kompatibilität mit TeX Versionen vor April 2018
+\usepackage[utf8]{inputenc}%Kompatibilität mit TeX Versionen vor April 2018
 \fi
 
 %%%%%%%%%%%%%%%%%%%
-%Sprachanpassung und Verbesserte Trennregeln
+%Sprachanpassung und verbesserte Trennregeln
 %%%%%%%%%%%%%%%%%%%
 \usepackage[english, main=ngerman]{babel}
 \usepackage{microtype}
@@ -127,5 +128,5 @@ Dabei kann es helfen, eine Übersichtsgrafik zu verwenden und Forschungsfragen z
 
 \bibliographystyle{plain}
 \bibliography{chapters/references}
-	
+
 \end{document}

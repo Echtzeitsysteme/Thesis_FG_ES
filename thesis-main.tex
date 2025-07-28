@@ -33,11 +33,11 @@
 % Der folgende Block ist nur bei pdfTeX auf Versionen vor April 2018 notwendig
 \usepackage{iftex}
 \ifPDFTeX
-\usepackage[utf8]{inputenc}%kompatibilität mit TeX Versionen vor April 2018
+\usepackage[utf8]{inputenc}%Kompatibilität mit TeX Versionen vor April 2018
 \fi
 
 %%%%%%%%%%%%%%%%%%%
-%Sprachanpassung und Verbesserte Trennregeln
+%Sprachanpassung und verbesserte Trennregeln
 %%%%%%%%%%%%%%%%%%%
 \usepackage[english, main=ngerman]{babel} % TODO: Or 'main=english' if you write in English
 \usepackage{microtype}
@@ -51,7 +51,7 @@
 %Tabellen
 %%%%%%%%%%%%%%%%%%%
 %\usepackage{array}     % Basispaket für Tabellenkonfiguration, wird von den folgenden automatisch geladen
-\usepackage{tabularx}  % Tabellen, die sich automatisch der Breite anpassen
+\usepackage{tabularx}   % Tabellen, die sich automatisch der Breite anpassen
 %\usepackage{longtable} % Mehrseitige Tabellen
 %\usepackage{xltabular} % Mehrseitige Tabellen mit anpassarer Breite
 \usepackage{booktabs}   % Verbesserte Möglichkeiten für Tabellenlayout über horizontale Linien
@@ -67,7 +67,7 @@
 %%%%%%%%%%%%%%%%%%%
 % Code-Listings und Illustrationen
 %%%%%%%%%%%%%%%%%%%
-\usepackage{listings}   % ermöglicht es Quell-code schön darzustellen
+\usepackage{listings}   % ermöglicht es Quellcode schön darzustellen
 \usepackage{graphicx}
 %%%%%%%%%%%%%%%%%%%
 
@@ -203,7 +203,7 @@
 % TODO: Nach Anmeldegespräch Nummer bei Betreuer erfragen und hier anpassen!
 \titleaddendum{ES-M-123}
 
-%Diese Felder werden untereinander auf der Titelseite platziert. 
+%Diese Felder werden untereinander auf der Titelseite platziert.
 \department{etit} % Das Kürzel wird automatisch ersetzt und als Studienfach gewählt, siehe Liste der Kürzel im Dokument.
 \group{Fachgebiet Echtzeitsysteme}
 % TODO: Or 'Real-Time Systems Lab' if you write in English
@@ -221,8 +221,8 @@
 \maketitle
 
 % TODO
-\affidavit % benutzen, wenn die Thesis gedruckt und digital eingereicht wird
-% \affidavit[digital] % benutzen, wenn die Thesis ausschließlich digital eingereicht wird
+%\affidavit % benutzen, wenn die Thesis gedruckt und digital eingereicht wird
+\affidavit[digital] % benutzen, wenn die Thesis ausschließlich digital eingereicht wird
 
 \input{chapters/guidelines}
 
@@ -275,5 +275,5 @@
 
 % TODO: Der Anhang ist optional, falls gewünscht bitte einkommentieren!
 %\input{chapters/appendix.tex}
-	
+
 \end{document}
