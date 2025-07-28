@@ -183,14 +183,14 @@
 % Configures the 4th layer (sub sub section) to be also numbered correctly (e.g., 1.2.3.4 instead of 1.2.3)
 \setcounter{secnumdepth}{3}
 
-% Load the hyphenat package to allow auto breaking of \textt(t) strings
-\usepackage[htt]{hyphenat}
-
 % Silence hyphenat-related font warnings
 \usepackage{silence}
 \WarningFilter{latexfont}{Font}
 \WarningFilter{latexfont}{Some}
 \WarningFilter{hyphenat}{***}
+
+% Load the hyphenat package to allow auto breaking of \textt(t) strings
+\usepackage[htt]{hyphenat}
 
 \begin{document}
 
