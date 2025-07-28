@@ -192,6 +192,21 @@
 % Load the hyphenat package to allow auto breaking of \textt(t) strings
 \usepackage[htt]{hyphenat}
 
+% Fix acronym/cleveref bug
+% https://tex.stackexchange.com/a/735502
+\makeatletter
+\AtBeginDocument
+ {
+   \def\ltx@label#1{\cref@label{#1}}%add braces
+   \def\label@in@display@noarg#1{\cref@old@label@in@display{#1}}%remove braces
+\def\label@in@mmeasure@noarg#1{%
+    \begingroup%
+      \measuring@false%
+      \cref@old@label@in@display{#1}%remove braces for multline, see https://tex.stackexchange.com/q/737204/2388
+    \endgroup}%  
+ } %
+\makeatother
+
 \begin{document}
 
 \frontmatter
@@ -249,10 +264,10 @@
 \tableofcontents
 \clearpage
 
-% TODO: Das Abkürzungsverzeichnis ist optional! Hier einkommentieren, falls es benutzt werden soll.
+% TODO: Das Abkürzungsverzeichnis ist optional! Hier auskommentieren, falls es nicht benutzt werden soll.
 %% Abkürzungsverzeichnis
-%\input{chapters/abbreviations.tex}
-%\clearpage
+\input{chapters/abbreviations.tex}
+\clearpage
 
 % Auflistung Abbildungen
 % https://tex.stackexchange.com/questions/784/how-to-change-the-line-spacing-in-my-list-of-figures
