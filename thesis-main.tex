@@ -196,9 +196,16 @@
 
 \frontmatter
 
-\Metadata{
-	title=Hier steht der mehrzeilige Titel der Thesis,
-	author=Jane Doe
+% Old way of passing metadata
+% \Metadata{
+% 	title=Hier steht der mehrzeilige Titel der Thesis,
+% 	author=Jane Doe
+% }
+% New way of (explicitely) passing metadata
+\hypersetup{% Metadata adjustments, in case these are not set, the data provided for \maketitle will be used
+	pdfauthor=Jane Doe,
+	pdfcreationdate=\today,
+	pdfkeywords={TU Darmstadt; FB18; ES}
 }
 
 \title{Hier steht der mehrzeilige Titel der Thesis}
