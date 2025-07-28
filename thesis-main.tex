@@ -186,6 +186,12 @@
 % Load the hyphenat package to allow auto breaking of \textt(t) strings
 \usepackage[htt]{hyphenat}
 
+% Silence hyphenat-related font warnings
+\usepackage{silence}
+\WarningFilter{latexfont}{Font}
+\WarningFilter{latexfont}{Some}
+\WarningFilter{hyphenat}{***}
+
 \begin{document}
 
 \frontmatter
