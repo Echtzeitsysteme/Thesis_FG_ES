@@ -33,11 +33,11 @@
 % Der folgende Block ist nur bei pdfTeX auf Versionen vor April 2018 notwendig
 \usepackage{iftex}
 \ifPDFTeX
-\usepackage[utf8]{inputenc}%kompatibilität mit TeX Versionen vor April 2018
+\usepackage[utf8]{inputenc}%Kompatibilität mit TeX Versionen vor April 2018
 \fi
 
 %%%%%%%%%%%%%%%%%%%
-%Sprachanpassung und Verbesserte Trennregeln
+%Sprachanpassung und verbesserte Trennregeln
 %%%%%%%%%%%%%%%%%%%
 \usepackage[english, main=ngerman]{babel} % TODO: Or 'main=english' if you write in English
 \usepackage{microtype}
@@ -51,7 +51,7 @@
 %Tabellen
 %%%%%%%%%%%%%%%%%%%
 %\usepackage{array}     % Basispaket für Tabellenkonfiguration, wird von den folgenden automatisch geladen
-\usepackage{tabularx}  % Tabellen, die sich automatisch der Breite anpassen
+\usepackage{tabularx}   % Tabellen, die sich automatisch der Breite anpassen
 %\usepackage{longtable} % Mehrseitige Tabellen
 %\usepackage{xltabular} % Mehrseitige Tabellen mit anpassarer Breite
 \usepackage{booktabs}   % Verbesserte Möglichkeiten für Tabellenlayout über horizontale Linien
@@ -62,12 +62,12 @@
 \usepackage{mathtools}  % erweiterte Fassung von amsmath
 \usepackage{amssymb}    % erweiterter Zeichensatz
 % SI Basiseinheiten mit bits und Bytes
-\usepackage[binary-units=true]{siunitx}
+\usepackage{siunitx}
 
 %%%%%%%%%%%%%%%%%%%
 % Code-Listings und Illustrationen
 %%%%%%%%%%%%%%%%%%%
-\usepackage{listings}   % ermöglicht es Quell-code schön darzustellen
+\usepackage{listings}   % ermöglicht es Quellcode schön darzustellen
 \usepackage{graphicx}
 %%%%%%%%%%%%%%%%%%%
 
@@ -183,16 +183,44 @@
 % Configures the 4th layer (sub sub section) to be also numbered correctly (e.g., 1.2.3.4 instead of 1.2.3)
 \setcounter{secnumdepth}{3}
 
+% Silence hyphenat-related font warnings
+\usepackage{silence}
+\WarningFilter{latexfont}{Font}
+\WarningFilter{latexfont}{Some}
+\WarningFilter{hyphenat}{***}
+
 % Load the hyphenat package to allow auto breaking of \textt(t) strings
 \usepackage[htt]{hyphenat}
+
+% Fix acronym/cleveref bug
+% https://tex.stackexchange.com/a/735502
+\makeatletter
+\AtBeginDocument
+ {
+   \def\ltx@label#1{\cref@label{#1}}%add braces
+   \def\label@in@display@noarg#1{\cref@old@label@in@display{#1}}%remove braces
+\def\label@in@mmeasure@noarg#1{%
+    \begingroup%
+      \measuring@false%
+      \cref@old@label@in@display{#1}%remove braces for multline, see https://tex.stackexchange.com/q/737204/2388
+    \endgroup}%  
+ } %
+\makeatother
 
 \begin{document}
 
 \frontmatter
 
-\Metadata{
-	title=Hier steht der mehrzeilige Titel der Thesis,
-	author=Jane Doe
+% Old way of passing metadata
+% \Metadata{
+% 	title=Hier steht der mehrzeilige Titel der Thesis,
+% 	author=Jane Doe
+% }
+% New way of (explicitely) passing metadata
+\hypersetup{% Metadata adjustments, in case these are not set, the data provided for \maketitle will be used
+	pdfauthor=Jane Doe,
+	pdfcreationdate=\today,
+	pdfkeywords={TU Darmstadt; FB18; ES}
 }
 
 \title{Hier steht der mehrzeilige Titel der Thesis}
@@ -203,7 +231,7 @@
 % TODO: Nach Anmeldegespräch Nummer bei Betreuer erfragen und hier anpassen!
 \titleaddendum{ES-M-123}
 
-%Diese Felder werden untereinander auf der Titelseite platziert. 
+%Diese Felder werden untereinander auf der Titelseite platziert.
 \department{etit} % Das Kürzel wird automatisch ersetzt und als Studienfach gewählt, siehe Liste der Kürzel im Dokument.
 \group{Fachgebiet Echtzeitsysteme}
 % TODO: Or 'Real-Time Systems Lab' if you write in English
@@ -221,8 +249,8 @@
 \maketitle
 
 % TODO
-\affidavit % benutzen, wenn die Thesis gedruckt und digital eingereicht wird
-% \affidavit[digital] % benutzen, wenn die Thesis ausschließlich digital eingereicht wird
+%\affidavit % benutzen, wenn die Thesis gedruckt und digital eingereicht wird
+\affidavit[digital] % benutzen, wenn die Thesis ausschließlich digital eingereicht wird
 
 \input{chapters/guidelines}
 
@@ -236,10 +264,10 @@
 \tableofcontents
 \clearpage
 
-% TODO: Das Abkürzungsverzeichnis ist optional! Hier einkommentieren, falls es benutzt werden soll.
+% TODO: Das Abkürzungsverzeichnis ist optional! Hier auskommentieren, falls es nicht benutzt werden soll.
 %% Abkürzungsverzeichnis
-%\input{chapters/abbreviations.tex}
-%\clearpage
+\input{chapters/abbreviations.tex}
+\clearpage
 
 % Auflistung Abbildungen
 % https://tex.stackexchange.com/questions/784/how-to-change-the-line-spacing-in-my-list-of-figures
@@ -275,5 +303,5 @@
 
 % TODO: Der Anhang ist optional, falls gewünscht bitte einkommentieren!
 %\input{chapters/appendix.tex}
-	
+
 \end{document}
